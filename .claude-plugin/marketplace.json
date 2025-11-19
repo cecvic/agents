@@ -1615,6 +1615,38 @@
       ]
     },
     {
+      "name": "stock-chatbot-mcp",
+      "source": "./plugins/stock-chatbot-mcp",
+      "description": "AI-powered stock analysis chatbot with Vercel AI SDK 4.2 and MaverickMCP integration for real-time market data, technical indicators, portfolio optimization, and backtesting",
+      "version": "1.0.0",
+      "author": {
+        "name": "Seth Hobson",
+        "url": "https://github.com/wshobson"
+      },
+      "homepage": "https://github.com/wshobson/agents",
+      "repository": "https://github.com/wshobson/agents",
+      "license": "MIT",
+      "keywords": [
+        "stock-analysis",
+        "chatbot",
+        "mcp",
+        "vercel-ai-sdk",
+        "financial-data",
+        "technical-indicators",
+        "portfolio-optimization",
+        "maverick-mcp"
+      ],
+      "category": "finance",
+      "strict": false,
+      "commands": [
+        "./commands/chatbot-launch.md"
+      ],
+      "agents": [
+        "./agents/stock-analyst.md",
+        "./agents/chatbot-architect.md"
+      ]
+    },
+    {
       "name": "payment-processing",
       "source": "./plugins/payment-processing",
       "description": "Payment gateway integration with Stripe, PayPal, checkout flow implementation, subscription billing, and PCI compliance",
