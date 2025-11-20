@@ -37,6 +37,8 @@ export async function POST(req: Request) {
     // Convert UIMessages to ModelMessages for streamText
     const modelMessages = convertToModelMessages(messages);
 
+    console.log('Processing chat request with', modelMessages.length, 'messages');
+
     // Stream response with tools enabled (if available)
     const result = streamText({
       model: openai('gpt-4o'),
@@ -45,7 +47,10 @@ export async function POST(req: Request) {
       // The AI SDK will automatically handle multi-step tool calling
     });
 
-    return result.toTextStreamResponse();
+    // Return UI message stream response for compatibility with useChat hook
+    return result.toUIMessageStreamResponse({
+      originalMessages: messages,
+    });
   } catch (error) {
     console.error('Error in chat route:', error);
     return new Response(
