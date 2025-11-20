@@ -1,4 +1,4 @@
-import { streamText } from 'ai';
+import { streamText, convertToModelMessages } from 'ai';
 import { openai } from '@ai-sdk/openai';
 import { experimental_createMCPClient } from '@ai-sdk/mcp';
 
@@ -34,10 +34,13 @@ export async function POST(req: Request) {
       console.warn('Chat will continue without stock market tools');
     }
 
+    // Convert UIMessages to ModelMessages for streamText
+    const modelMessages = convertToModelMessages(messages);
+
     // Stream response with tools enabled (if available)
     const result = streamText({
       model: openai('gpt-4o'),
-      messages,
+      messages: modelMessages,
       tools: tools,
       // The AI SDK will automatically handle multi-step tool calling
     });
